@@ -1,0 +1,64 @@
+﻿﻿@model List<ProyectoNoSQL_Web.Entidades.DatosPersonales>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+
+
+                        <a class="btn btn-primary btn-user btn-block my-3" href="@Url.Action("Nuevo","Home")">Nuevo</a>
+                        <table class="table table-bordered dataTable" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th>Cedula</th>
+                                    <th>Nombre</th>
+                                    <th>ApellidoP</th>
+                                    <th>ApellidoM</th>
+                                    <th>Edad</th>
+                                    <th>Genero</th>
+                                    <th>Fecha</th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@item.Cedula</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.ApellidoP</td>
+                                        <td>@item.ApellidoM</td>
+                                        <td>@item.Edad</td>
+                                        <td>@item.Genero</td>
+                                        @if (@item.Fecha.ToString() == "1/1/0001 12:00:00 AM")
+                                        {
+                                            <td></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.Fecha</td>
+                                        }
+                                        <td>update / delete</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
