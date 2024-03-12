@@ -20,6 +20,7 @@
                         <table class="table table-bordered dataTable" style="width: 100%;">
                             <thead>
                                 <tr role="row">
+                                    <th>ID</th>
                                     <th>Cedula</th>
                                     <th>Nombre</th>
                                     <th>ApellidoP</th>
@@ -35,6 +36,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr class="odd">
+                                        <td>@item.Id</td>
                                         <td>@item.Cedula</td>
                                         <td>@item.Nombre</td>
                                         <td>@item.ApellidoP</td>

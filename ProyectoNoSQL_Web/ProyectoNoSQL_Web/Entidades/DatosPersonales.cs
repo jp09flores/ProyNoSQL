@@ -8,7 +8,7 @@ namespace ProyectoNoSQL_Web.Entidades
     public class DatosPersonales
     {
        
-
+        public string Id { get; set; }
         public string Cedula { get; set; }
 
     

@@ -9,6 +9,9 @@ namespace ProyectoNoSQL_Api.Entidades
 {
     public class DatosPersonales
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
         [BsonElement("Cedula")]
         public string Cedula { get; set; }
