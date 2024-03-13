@@ -66,6 +66,52 @@ namespace ProyectoNoSQL_Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult MostrarUno(string id)
+        {
+            var respuesta = modelo.ConsultarUnDato(id);
+
+            if (respuesta.Codigo == 0)
+                return View(respuesta.Dato); 
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new DatosPersonales()); 
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult MostrarUno(DatosPersonales entidad)
+        {
+            var respuesta = modelo.Editar(entidad);
+
+            if (respuesta.Codigo == 0)
+                return RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Eliminar(string id)
+        {
+            
+            var entidad = new DatosPersonales { Id = id };
+
+            var respuesta = modelo.Eliminar(entidad);
+
+            if (respuesta.Codigo == 0)
+                return RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View();
+            }
+        }
+
 
     }
 }

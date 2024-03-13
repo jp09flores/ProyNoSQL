@@ -51,7 +51,14 @@
                                         {
                                             <td>@item.Fecha</td>
                                         }
-                                        <td>update / delete</td>
+                                    <td>
+                                        @Html.ActionLink("Actualizar", "MostrarUno", "Home", new { id = item.Id }, null)
+                                        @using (Html.BeginForm("Eliminar", "Home", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("id", item.Id) 
+                                            <button type="submit" class="btn btn-link">Eliminar</button>
+                                        }
+                                    </td>
 
                                     </tr>
                                 }

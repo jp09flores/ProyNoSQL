@@ -42,5 +42,47 @@ namespace ProyectoNoSQL_Web.Models
                     return null;
             }
         }
+
+        public ConfirmacionDatosPersonales ConsultarUnDato(string id)
+        {
+            using (var client = new HttpClient())
+            {
+                url += "DatosPersonales/Mostrar/" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionDatosPersonales>().Result;
+                else
+                    return null;
+            }
+        }
+        public Confirmacion Editar(DatosPersonales datosPersonales)
+        {
+            using (var client = new HttpClient())
+            {
+                url += "DatosPersonales/Editar";
+                JsonContent jsonEntidad = JsonContent.Create(datosPersonales);
+                var respuesta = client.PostAsync(url, jsonEntidad).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
+                else
+                    return null;
+            }
+        }
+        public Confirmacion Eliminar (DatosPersonales datosPersonales)
+        {
+            using (var client = new HttpClient())
+            {
+                url += "DatosPersonales/Eliminar";
+                JsonContent jsonEntidad = JsonContent.Create(datosPersonales);
+                var respuesta = client.PostAsync(url, jsonEntidad).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
+                else
+                    return null;
+            }
+        }
     }
 }
