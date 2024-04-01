@@ -1,40 +1,112 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <title>Gymso Fitness HTML Template</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="~/Estilos/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Estilos/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Estilos/css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="~/Estilos/css/tooplate-gymso-style.css">
+    <!--
+
+    -->
 </head>
-<body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50" style="padding-top:70px">
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="height:70px">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+
+            <a class="navbar-brand " href="@Url.Action("Index","Home")">Gymso Fitness</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Home")" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("About","Home")" class="nav-link smoothScroll">About </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Tablas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Index","Clientes")">Clientes</a>
+                            <a class="dropdown-item" href="@Url.Action("Rol","Home")">Rol</a>
+                            <a class="dropdown-item" href="@Url.Action("Empleados","Home")">Empleados</a>
+                            <a class="dropdown-item" href="@Url.Action("Membresia","Home")">Membresia</a>
+                            <a class="dropdown-item" href="@Url.Action("Clases","Home")">Clases</a>
+                            <a class="dropdown-item" href="@Url.Action("Inventario","Home")">Inventario</a>
+                            <a class="dropdown-item" href="@Url.Action("Maquinas","Home")">Maquinas</a>
+                            <a class="dropdown-item" href="@Url.Action("Proveedores","Home")">Proovedores</a>
+                        </div>
+                    </li>
 
                 </ul>
+
+
             </div>
+
         </div>
     </nav>
-    <div class="container body-content">
+
+    <div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="ml-auto col-lg-4 col-md-5">
+                    <p class="copyright-text">
+                        Copyright &copy; 2020 Gymso Fitness Co.
+
+                        <br>Design: <a href="https://www.tooplate.com">Tooplate</a>
+                    </p>
+                </div>
+
+                <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+                    <p class="mr-4">
+                        <i class="fa fa-envelope-o mr-1"></i>
+                        <a href="#">hello@company.co</a>
+                    </p>
+
+                    <p><i class="fa fa-phone mr-1"></i> 010-020-0840</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script src="~/Estilos/js/jquery.min.js"></script>
+    <script src="~/Estilos/js/bootstrap.min.js"></script>
+    <script src="~/Estilos/js/aos.js"></script>
+    <script src="~/Estilos/js/smoothscroll.js"></script>
+    <script src="~/Estilos/js/custom.js"></script>
+
 </body>
 </html>

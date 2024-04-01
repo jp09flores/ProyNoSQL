@@ -1,0 +1,80 @@
+// Cambiar a la base de datos "gimnasio"
+use Gimnasio;
+
+// Crear la colección "clientes" y insertar un documento de ejemplo
+db.clientes.insertOne({
+  "nombre": "Ejemplo",
+  "apellido": "Cliente",
+  "fecha_nacimiento": new Date("1990-01-01"),
+  "genero": "Masculino",
+  "direccion": "Calle Ejemplo 123",
+  "telefono": "123456789",
+  "email": "ejemplo@cliente.com",
+  "fecha_inicio_membresia": new Date("2020-01-01")
+});
+
+// Crear la colección "rolEmpleado" y insertar un documento de ejemplo
+db.rolEmpleado.insertOne({
+  "id_rol": 1,
+  "nombre_rol": "Administrador"
+});
+
+// Crear la colección "empleados" y insertar un documento de ejemplo
+db.empleados.insertOne({
+  "nombre": "Ejemplo",
+  "apellido": "Empleado",
+  "fecha_nacimiento": new Date("1985-01-01"),
+  "genero": "Femenino",
+  "direccion": "Avenida Ejemplo 456",
+  "telefono": "987654321",
+  "email": "ejemplo@empleado.com",
+  "fecha_inicio_empleo": new Date("2020-01-01"),
+  "salario": 2500.00
+});
+
+// Crear la colección "membresias" y insertar un documento de ejemplo
+db.membresias.insertOne({
+  "tipo_membresia": "Mensual",
+  "precio": 50.00,
+  "descripcion": "Membresía mensual estándar"
+});
+
+// Crear la colección "clases" y insertar un documento de ejemplo
+db.clases.insertOne({
+  "nombre_clase": "Yoga",
+  "descripcion": "Clase de yoga para principiantes",
+  "horario": "Lunes y miércoles, 18:00 - 19:00",
+  "instructor": "Instructor Ejemplo",
+  "duracion": 60
+});
+
+// Crear la colección "inventario" y insertar un documento de ejemplo
+db.inventario.insertOne({
+  "id_producto": 1,
+  "nombre_producto": "Pesas",
+  "descripcion": "Set de pesas de 10 kg",
+  "precio": 19.99,
+  "cantidad_stock": 100,
+  "estado": "Disponible"
+});
+
+// Crear la colección "maquinas" y insertar un documento de ejemplo
+db.maquinas.insertOne({
+  "nombre_maquina": "Cinta de correr",
+  "descripcion": "Cinta de correr para entrenamiento cardiovascular",
+  "estado": "Disponible"
+});
+
+// Crear la colección "proveedores" y insertar un documento de ejemplo
+db.proveedores.insertOne({
+  "nombre_proveedor": "Proveedor Ejemplo",
+  "direccion": "Calle Proveedor 789",
+  "telefono": "567890123",
+  "email": "ejemplo@proveedor.com"
+});
+
+db.usuarios.insertOne({
+  "NombreUsuario": "admin",
+  "Password": "admin",
+  "Estado": true
+});

@@ -259,9 +259,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
-    <Compile Include="Entidades\DatosPersonales.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

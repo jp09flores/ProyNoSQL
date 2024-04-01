@@ -9,31 +9,31 @@ using System.Web;
 
 namespace ProyectoNoSQL_Web.Models
 {
-    public class DatosPersonalesModel
+    public class ClientesModel
     {
 
         public string url = ConfigurationManager.AppSettings["urlApi"];
 
-        public ConfirmacionDatosPersonales ConsultarDatosPersonales()
+        public ConfirmacionCliente ConsultarDatosPersonales()
         {
             using (var client = new HttpClient())
             {
-                url += "DatosPersonales/Mostrar";
+                url += "Clientes/Mostrar";
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionDatosPersonales>().Result;
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionCliente>().Result;
                 else
                     return null;
             }
         }
 
-        public Confirmacion NuevoDatosPersonales(DatosPersonales datosPersonales)
+        public Confirmacion NuevoDatosPersonales(Cliente entidad)
         {
             using (var client = new HttpClient())
             {
-                url += "DatosPersonales/Nuevo";
-                JsonContent jsonEntidad = JsonContent.Create(datosPersonales);
+                url += "Clientes/Nuevo";
+                JsonContent jsonEntidad = JsonContent.Create(entidad);
                 var respuesta = client.PostAsync(url, jsonEntidad).Result;
 
                 if (respuesta.IsSuccessStatusCode)
@@ -43,26 +43,26 @@ namespace ProyectoNoSQL_Web.Models
             }
         }
 
-        public ConfirmacionDatosPersonales ConsultarUnDato(string id)
+        public ConfirmacionCliente ConsultarUnDato(string id)
         {
             using (var client = new HttpClient())
             {
-                url += "DatosPersonales/Mostrar/" + id;
+                url += "Clientes/Mostrar/" + id;
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionDatosPersonales>().Result;
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionCliente>().Result;
                 else
                     return null;
             }
         }
-        public Confirmacion Editar(DatosPersonales datosPersonales)
+        public Confirmacion Editar(Cliente entidad)
         {
             using (var client = new HttpClient())
             {
-                url += "DatosPersonales/Editar";
-                JsonContent jsonEntidad = JsonContent.Create(datosPersonales);
-                var respuesta = client.PostAsync(url, jsonEntidad).Result;
+                url += "Clientes/Editar";
+                JsonContent jsonEntidad = JsonContent.Create(entidad);
+                var respuesta = client.PutAsync(url, jsonEntidad).Result;
 
                 if (respuesta.IsSuccessStatusCode)
                     return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
@@ -70,12 +70,12 @@ namespace ProyectoNoSQL_Web.Models
                     return null;
             }
         }
-        public Confirmacion Eliminar (DatosPersonales datosPersonales)
+        public Confirmacion Eliminar (Cliente entidad)
         {
             using (var client = new HttpClient())
             {
-                url += "DatosPersonales/Eliminar";
-                JsonContent jsonEntidad = JsonContent.Create(datosPersonales);
+                url += "Clientes/Eliminar";
+                JsonContent jsonEntidad = JsonContent.Create(entidad);
                 var respuesta = client.PostAsync(url, jsonEntidad).Result;
 
                 if (respuesta.IsSuccessStatusCode)

@@ -12,27 +12,27 @@ using System.Web.Http;
 
 namespace ProyectoNoSQL_Api.Controllers
 {
-    public class InicioController : ApiController
+    public class ClienteController : ApiController
     {
-        private readonly IMongoCollection<DatosPersonales> datosPersonalesCollection;
+        private readonly IMongoCollection<Cliente> datosPersonalesCollection;
 
 
-        public InicioController()
+        public ClienteController()
         {
             string connectionString = ConfigurationManager.AppSettings["ConexionMongo"];
             var mongoClient = new MongoClient(connectionString);
-            var database = mongoClient.GetDatabase("Personas");
-            datosPersonalesCollection = database.GetCollection<DatosPersonales>("DatosPersonales");
+            var database = mongoClient.GetDatabase("Gimnasio");
+            datosPersonalesCollection = database.GetCollection<Cliente>("clientes");
         }
 
       
 
 
         [HttpGet]
-        [Route("DatosPersonales/Mostrar")]
-        public ConfirmacionDatosPersonales ConsultarDatosPersonales()
+        [Route("Clientes/Mostrar")]
+        public ConfirmacionCliente ConsultarDatosPersonales()
         {
-            var respuesta = new ConfirmacionDatosPersonales();
+            var respuesta = new ConfirmacionCliente();
 
             try
             {
@@ -61,10 +61,10 @@ namespace ProyectoNoSQL_Api.Controllers
             return respuesta;
         }
         [HttpGet]
-        [Route("DatosPersonales/Mostrar/{id}")]
-        public ConfirmacionDatosPersonales ConsultarUnDato(string id)
+        [Route("Clientes/Mostrar/{id}")]
+        public ConfirmacionCliente ConsultarUnDato(string id)
         {
-            var respuesta = new ConfirmacionDatosPersonales();
+            var respuesta = new ConfirmacionCliente();
 
             try
             {
@@ -91,8 +91,8 @@ namespace ProyectoNoSQL_Api.Controllers
             return respuesta;
         }
         [HttpPost]
-        [Route("DatosPersonales/Nuevo")]
-        public Confirmacion NuevoDatosPersonales(DatosPersonales datosPersonales)
+        [Route("Clientes/Nuevo")]
+        public Confirmacion NuevoDatosPersonales(Cliente datosPersonales)
         {
             var respuesta = new Confirmacion();
 
@@ -112,23 +112,24 @@ namespace ProyectoNoSQL_Api.Controllers
             return respuesta;
         }
 
-        [HttpPost]
-        [Route("DatosPersonales/Editar")]
-        public async Task<Confirmacion> EditarDatosPersonales(DatosPersonales datosPersonales)
+        [HttpPut]
+        [Route("Clientes/Editar")]
+        public async Task<Confirmacion> EditarDatosPersonales(Cliente datosPersonales)
         {
             var respuesta = new Confirmacion();
 
             try
             {
-                var filter = Builders<DatosPersonales>.Filter.Eq("_id", ObjectId.Parse(datosPersonales.Id));
-                var update = Builders<DatosPersonales>.Update
-                    .Set("Cedula", datosPersonales.Cedula)
-                    .Set("Nombre", datosPersonales.Nombre)
-                    .Set("Apellido_P", datosPersonales.ApellidoP)
-                    .Set("Apellido_M", datosPersonales.ApellidoM)
-                    .Set("Edad", datosPersonales.Edad)
-                    .Set("Genero", datosPersonales.Genero)
-                    .Set("Fecha", datosPersonales.Fecha);
+                var filter = Builders<Cliente>.Filter.Eq("_id", ObjectId.Parse(datosPersonales.Id));
+                var update = Builders<Cliente>.Update
+                    .Set(c => c.Nombre, datosPersonales.Nombre)
+                    .Set(c => c.Apellido, datosPersonales.Apellido)
+                    .Set(c => c.FechaNacimiento, datosPersonales.FechaNacimiento)
+                    .Set(c => c.Genero, datosPersonales.Genero)
+                    .Set(c => c.Direccion, datosPersonales.Direccion)
+                    .Set(c => c.Telefono, datosPersonales.Telefono)
+                    .Set(c => c.Email, datosPersonales.Email)
+                    .Set(c => c.FechaInicioMembresia, datosPersonales.FechaInicioMembresia);
 
                 var result = await datosPersonalesCollection.UpdateOneAsync(filter, update);
 
@@ -151,15 +152,16 @@ namespace ProyectoNoSQL_Api.Controllers
 
             return respuesta;
         }
+
         [HttpPost]
-        [Route("DatosPersonales/Eliminar")]
-        public async Task<Confirmacion> EliminarDatosPersonalesAsync(DatosPersonales datosPersonales)
+        [Route("Clientes/Eliminar")]
+        public async Task<Confirmacion> EliminarDatosPersonalesAsync(Cliente datosPersonales)
         {
             var respuesta = new Confirmacion();
 
             try
             {
-                var filter = Builders<DatosPersonales>.Filter.Eq("_id", ObjectId.Parse(datosPersonales.Id));
+                var filter = Builders<Cliente>.Filter.Eq("_id", ObjectId.Parse(datosPersonales.Id));
                 var resultado = await datosPersonalesCollection.DeleteOneAsync(filter);
 
                 if (resultado.DeletedCount == 1)

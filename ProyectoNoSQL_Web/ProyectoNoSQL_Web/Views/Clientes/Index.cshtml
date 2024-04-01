@@ -1,0 +1,67 @@
+﻿
+@model List<ProyectoNoSQL_Web.Entidades.Cliente>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card shadow m-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+
+
+                        <a class="btn btn-primary btn-user btn-block my-3" href="@Url.Action("Nuevo","Clientes")">Nuevo</a>
+                        <table class="table table-bordered dataTable" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>FechaNacimiento</th>
+                                    <th>Genero</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>Email</th>
+                                    <th>Fecha Inicio </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Apellido</td>
+                                        <td>@item.FechaNacimiento</td>
+                                        <td>@item.Genero</td>
+                                        <td>@item.Direccion</td>
+                                        <td>@item.Telefono</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.FechaInicioMembresia</td>
+                                      
+                                        <td>
+                                            @Html.ActionLink("Actualizar", "Actualizar", "Clientes", new { id = item.Id }, null)
+                                            @using (Html.BeginForm("Eliminar", "Clientes", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("id", item.Id)
+                                                <button type="submit" class="btn btn-link">Eliminar</button>
+                                            }
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

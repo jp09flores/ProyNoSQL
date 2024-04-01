@@ -151,13 +151,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
-    <Compile Include="Entidades\DatosPersonales.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DatosPersonalesModel.cs" />
+    <Compile Include="Models\ClientesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,32 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Estilos2\css\bootstrap.min.css" />
+    <Content Include="Estilos2\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="Estilos2\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="Estilos2\css\bootstrap\mixins\_transition.css" />
+    <Content Include="Estilos2\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="Estilos2\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Estilos2\css\bootstrap\_media.css" />
+    <Content Include="Estilos2\css\style.css" />
+    <Content Include="Estilos2\images\logo.jpg" />
+    <Content Include="Estilos2\images\mouse.png" />
+    <Content Include="Estilos\css\aos.css" />
+    <Content Include="Estilos\css\bootstrap.min.css" />
+    <Content Include="Estilos\css\font-awesome.min.css" />
+    <Content Include="Estilos\css\tooplate-gymso-style.css" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
+    <Content Include="Estilos\images\class\cardio-class.jpg" />
+    <Content Include="Estilos\images\class\crossfit-class.jpg" />
+    <Content Include="Estilos\images\class\yoga-class.jpg" />
+    <Content Include="Estilos\images\hero-bg.jpg" />
+    <Content Include="Estilos\images\team\team-image.jpg" />
+    <Content Include="Estilos\images\team\team-image01.jpg" />
+    <Content Include="Estilos\js\aos.js" />
+    <Content Include="Estilos\js\bootstrap.min.js" />
+    <Content Include="Estilos\js\custom.js" />
+    <Content Include="Estilos\js\jquery.min.js" />
+    <Content Include="Estilos\js\smoothscroll.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -186,6 +213,20 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Estilos2\css\.DS_Store" />
+    <Content Include="Estilos2\css\bootstrap\.DS_Store" />
+    <Content Include="Estilos2\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.woff" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Estilos\fonts\FontAwesome.otf" />
+    <Content Include="Estilos\fonts\Plain-Bold.woff" />
+    <Content Include="Estilos\fonts\Plain-Bold.woff2" />
+    <Content Include="Estilos\fonts\Plain-Light.woff" />
+    <Content Include="Estilos\fonts\Plain-Light.woff2" />
+    <Content Include="Estilos\fonts\Plain-Regular.woff" />
+    <Content Include="Estilos\fonts\Plain-Regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -211,8 +252,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Nuevo.cshtml" />
-    <Content Include="Views\Home\MostrarUno.cshtml" />
+    <Content Include="Views\Clientes\Nuevo.cshtml" />
+    <Content Include="Views\Clientes\Actualizar.cshtml" />
+    <Content Include="Views\Shared\_LayoutExterno.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
