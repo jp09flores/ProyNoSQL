@@ -12,32 +12,32 @@ using System.Web.Http;
 
 namespace ProyectoNoSQL_Api.Controllers
 {
-    public class ClienteController : ApiController
+    public class RolController : ApiController
     {
-        private readonly IMongoCollection<Cliente> datosPersonalesCollection;
+        private readonly IMongoCollection<Rol> RolCollection;
 
 
-        public ClienteController()
+        public RolController()
         {
             string connectionString = ConfigurationManager.AppSettings["ConexionMongo"];
             var mongoClient = new MongoClient(connectionString);
             var database = mongoClient.GetDatabase("Gimnasio");
-            datosPersonalesCollection = database.GetCollection<Cliente>("clientes");
+            RolCollection = database.GetCollection<Rol>("rolEmpleado");
         }
 
       
 
 
         [HttpGet]
-        [Route("Clientes/Mostrar")]
-        public ConfirmacionCliente ConsultarDatosPersonales()
+        [Route("Rol/Mostrar")]
+        public ConfirmacionRol ConsultarDatosRoles()
         {
-            var respuesta = new ConfirmacionCliente();
+            var respuesta = new ConfirmacionRol();
 
             try
             {
                
-                    var datos = datosPersonalesCollection.Find(_ => true).ToList();
+                    var datos = RolCollection.Find(_ => true).ToList();
 
                     if (datos.Count > 0)
                     {
@@ -61,14 +61,14 @@ namespace ProyectoNoSQL_Api.Controllers
             return respuesta;
         }
         [HttpGet]
-        [Route("Clientes/MostrarUno")]
-        public ConfirmacionCliente ConsultarUnDato(string id)
+        [Route("Rol/MostrarUno")]
+        public ConfirmacionRol ConsultarUnDato(string id)
         {
-            var respuesta = new ConfirmacionCliente();
+            var respuesta = new ConfirmacionRol();
 
             try
             {
-                var dato = datosPersonalesCollection.Find(d => d.Id == id).FirstOrDefault();
+                var dato = RolCollection.Find(d => d.Id == id).FirstOrDefault();
 
                 if (dato != null)
                 {
@@ -91,14 +91,14 @@ namespace ProyectoNoSQL_Api.Controllers
             return respuesta;
         }
         [HttpPost]
-        [Route("Clientes/Nuevo")]
-        public Confirmacion NuevoDatosPersonales(Cliente datosPersonales)
+        [Route("Rol/Nuevo")]
+        public Confirmacion NuevoDatosRol(Rol entidad)
         {
             var respuesta = new Confirmacion();
 
             try
             {
-                datosPersonalesCollection.InsertOne(datosPersonales);
+                RolCollection.InsertOne(entidad);
 
                 respuesta.Codigo = 0;
                 respuesta.Detalle = string.Empty;
@@ -113,25 +113,19 @@ namespace ProyectoNoSQL_Api.Controllers
         }
 
         [HttpPut]
-        [Route("Clientes/Editar")]
-        public async Task<Confirmacion> EditarDatosPersonales(Cliente datosPersonales)
+        [Route("Rol/Editar")]
+        public async Task<Confirmacion> EditarRol(Rol entidad)
         {
             var respuesta = new Confirmacion();
 
             try
             {
-                var filter = Builders<Cliente>.Filter.Eq("_id", ObjectId.Parse(datosPersonales.Id));
-                var update = Builders<Cliente>.Update
-                    .Set(c => c.Nombre, datosPersonales.Nombre)
-                    .Set(c => c.Apellido, datosPersonales.Apellido)
-                    .Set(c => c.FechaNacimiento, datosPersonales.FechaNacimiento)
-                    .Set(c => c.Genero, datosPersonales.Genero)
-                    .Set(c => c.Direccion, datosPersonales.Direccion)
-                    .Set(c => c.Telefono, datosPersonales.Telefono)
-                    .Set(c => c.Email, datosPersonales.Email)
-                    .Set(c => c.FechaInicioMembresia, datosPersonales.FechaInicioMembresia);
+                var filter = Builders<Rol>.Filter.Eq("_id", ObjectId.Parse(entidad.Id));
+                var update = Builders<Rol>.Update
+                    .Set(r => r.IdRol, entidad.IdRol)
+                    .Set(r => r.NombreRol, entidad.NombreRol);
 
-                var result = await datosPersonalesCollection.UpdateOneAsync(filter, update);
+                var result = await RolCollection.UpdateOneAsync(filter, update);
 
                 if (result.ModifiedCount > 0)
                 {
@@ -154,15 +148,15 @@ namespace ProyectoNoSQL_Api.Controllers
         }
 
         [HttpDelete]
-        [Route("Clientes/Eliminar")]
-        public async Task<Confirmacion> EliminarDatosPersonalesAsync(string id)
+        [Route("Rol/Eliminar")]
+        public async Task<Confirmacion> EliminarRolAsync(string id)
         {
             var respuesta = new Confirmacion();
 
             try
             {
-                var filter = Builders<Cliente>.Filter.Eq("_id", ObjectId.Parse(id));
-                var resultado = await datosPersonalesCollection.DeleteOneAsync(filter);
+                var filter = Builders<Rol>.Filter.Eq("_id", ObjectId.Parse(id));
+                var resultado = await RolCollection.DeleteOneAsync(filter);
 
                 if (resultado.DeletedCount == 1)
                 {

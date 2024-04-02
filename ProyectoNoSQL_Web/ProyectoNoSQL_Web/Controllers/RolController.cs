@@ -9,41 +9,36 @@ using System.Web.Mvc;
 
 namespace ProyectoNoSQL_Web.Controllers
 {
-    public class ClientesController : Controller
+    public class RolController : Controller
     {
-        ClientesModel modelo = new ClientesModel();
+        RolModel modelo = new RolModel();
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult ConsultarRoles()
         {
-            var respuesta = modelo.ConsultarDatosPersonales();
+            var respuesta = modelo.ConsultarRoles();
 
             if (respuesta.Codigo == 0)
                 return View(respuesta.Datos);
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new List<Cliente>());
+                return View(new List<Rol>());
             }
         }
         [HttpGet]
-        public ActionResult Nuevo()
+        public ActionResult NuevoRol()
         {
-
-            var datosPersonales = new Cliente();
-
-            datosPersonales.FechaInicioMembresia = DateTime.Now;
-
-            return View(datosPersonales);
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Nuevo(Cliente entidad)
+        public ActionResult NuevoRol(Rol entidad)
         {
 
-            var respuesta = modelo.NuevoDatosPersonales(entidad);
+            var respuesta = modelo.NuevoRol(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Clientes");
+                return RedirectToAction("ConsultarRoles", "Rol");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
@@ -52,7 +47,7 @@ namespace ProyectoNoSQL_Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Actualizar(string id)
+        public ActionResult ActualizarRol(string id)
         {
             var respuesta = modelo.ConsultarUnDato(id);
 
@@ -61,18 +56,18 @@ namespace ProyectoNoSQL_Web.Controllers
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new Cliente());
+                return View(new Rol());
             }
         }
 
 
         [HttpPost]
-        public ActionResult Actualizar(Cliente entidad)
+        public ActionResult ActualizarRol(Rol entidad)
         {
             var respuesta = modelo.Editar(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Clientes");
+                return RedirectToAction("ConsultarRoles", "Rol");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
@@ -81,14 +76,12 @@ namespace ProyectoNoSQL_Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Eliminar(string id)
+        public ActionResult EliminarRol(string id)
         {
-
-
             var respuesta = modelo.Eliminar(id);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Clientes");
+                return RedirectToAction("ConsultarRoles", "Rol");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;

@@ -46,12 +46,8 @@
                                         <td>@item.FechaInicioMembresia</td>
                                       
                                         <td>
-                                            @Html.ActionLink("Actualizar", "Actualizar", "Clientes", new { id = item.Id }, null)
-                                            @using (Html.BeginForm("Eliminar", "Clientes", FormMethod.Post))
-                                            {
-                                                @Html.Hidden("id", item.Id)
-                                                <button type="submit" class="btn btn-link">Eliminar</button>
-                                            }
+                                            <a href="@Url.Action("Actualizar","Clientes", new { id = @item.Id })"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                            <a href="@Url.Action("Eliminar","Clientes", new { id = @item.Id })"><i class="fa fa-trash-o fa-2x"></i></a>
                                         </td>
 
                                     </tr>

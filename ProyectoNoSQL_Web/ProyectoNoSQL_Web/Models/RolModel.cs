@@ -9,30 +9,30 @@ using System.Web;
 
 namespace ProyectoNoSQL_Web.Models
 {
-    public class ClientesModel
+    public class RolModel
     {
 
         public string url = ConfigurationManager.AppSettings["urlApi"];
 
-        public ConfirmacionCliente ConsultarDatosPersonales()
+        public ConfirmacionRol ConsultarRoles()
         {
             using (var client = new HttpClient())
             {
-                url += "Clientes/Mostrar";
+                url += "Rol/Mostrar";
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionCliente>().Result;
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionRol>().Result;
                 else
                     return null;
             }
         }
 
-        public Confirmacion NuevoDatosPersonales(Cliente entidad)
+        public Confirmacion NuevoRol(Rol entidad)
         {
             using (var client = new HttpClient())
             {
-                url += "Clientes/Nuevo";
+                url += "Rol/Nuevo";
                 JsonContent jsonEntidad = JsonContent.Create(entidad);
                 var respuesta = client.PostAsync(url, jsonEntidad).Result;
 
@@ -43,24 +43,24 @@ namespace ProyectoNoSQL_Web.Models
             }
         }
 
-        public ConfirmacionCliente ConsultarUnDato(string id)
+        public ConfirmacionRol ConsultarUnDato(string id)
         {
             using (var client = new HttpClient())
             {
-                url += "Clientes/MostrarUno?id=" + id;
+                url += "Rol/MostrarUno?id=" +id;
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
-                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionCliente>().Result;
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionRol>().Result;
                 else
                     return null;
             }
         }
-        public Confirmacion Editar(Cliente entidad)
+        public Confirmacion Editar(Rol entidad)
         {
             using (var client = new HttpClient())
             {
-                url += "Clientes/Editar";
+                url += "Rol/Editar";
                 JsonContent jsonEntidad = JsonContent.Create(entidad);
                 var respuesta = client.PutAsync(url, jsonEntidad).Result;
 
@@ -74,7 +74,7 @@ namespace ProyectoNoSQL_Web.Models
         {
             using (var client = new HttpClient())
             {
-                url += "Clientes/Eliminar?id=" + id;
+                url += "Rol/Eliminar?id=" + id;
                 var respuesta = client.DeleteAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
