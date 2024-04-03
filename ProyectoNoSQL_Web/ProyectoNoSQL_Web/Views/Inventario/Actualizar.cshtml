@@ -29,6 +29,7 @@
                                                     <div class="col-sm-12">
                                                         <div class="col-sm-12">
                                                             <div class="form-group">
+                                                                @Html.HiddenFor(m => m.Id)
                                                                 @Html.Label("Nombre del Producto")
                                                                 @Html.TextBoxFor(model => model.NombreProducto, new { @class = "form-control", @required = "true" })
                                                             </div>

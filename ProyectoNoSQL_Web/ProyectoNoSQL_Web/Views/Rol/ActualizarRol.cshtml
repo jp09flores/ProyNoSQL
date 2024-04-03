@@ -28,6 +28,7 @@
                                 <div style="display:flex;align-content:center;justify-content:center">
                                     @using (Html.BeginForm("ActualizarRol", "Rol"))
                                     {
+                                        @Html.HiddenFor(m => m.Id)
                                         <div class="form-group my-2">
                                             @Html.TextBoxFor(m => m.IdRol, new { @class = "form-control form-control-user", @placeholder = "ID Rol", @required = "true", @type = "number" })
                                         </div>

@@ -29,10 +29,7 @@
                                                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                     <div class="col-sm-12">
                                                         <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <label>ID</label>
-                                                                @Html.TextBoxFor(model => model.Id, new { @class = "form-control", @readonly = "readonly", @required = "true" })
-                                                            </div>
+                                                            @Html.HiddenFor(m => m.Id)
                                                             <div class="form-group">
                                                                 <label>Nombre</label>
                                                                 @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @required = "true" })
@@ -58,6 +55,10 @@
                                                                 @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @required = "true", @type = "number" })
                                                             </div>
                                                             <div class="form-group">
+                                                                <label>Fecha Inicio</label>
+                                                                @Html.TextBoxFor(model => model.FechaInicioMembresia, new { @class = "form-control", @required = "true" })
+                                                            </div>
+                                                            <div class="form-group">
                                                                 <label>Email</label>
                                                                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @required = "true", @type = "email" })
                                                             </div>
@@ -70,11 +71,11 @@
                                     </div>
                                 }
                             </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
