@@ -9,28 +9,22 @@ using System.Web.Mvc;
 namespace ProyectoNoSQL_Web.Controllers
 {
     [FiltroSeguridad]
-    public class InventarioController : Controller
+    public class MembresiaController : Controller
     {
-        InventarioModel modelo = new InventarioModel();
-
-        // ------------------------------------------------------
-
+      MembresiasModel modelo = new MembresiasModel();
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult InicioMembresia()
         {
-            var respuesta = modelo.ConsultarDatosInventario();
+            var respuesta = modelo.ConsultarMembresia();
 
             if (respuesta.Codigo == 0)
                 return View(respuesta.Datos);
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new List<Inventario>());
+                return View(new List<Membresia>());
             }
         }
-
-        // ------------------------------------------------------
-
         [HttpGet]
         public ActionResult Nuevo()
         {
@@ -38,20 +32,19 @@ namespace ProyectoNoSQL_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Nuevo(Inventario entidad)
+        public ActionResult Nuevo(Membresia entidad)
         {
-            var respuesta = modelo.NuevoDatosInventario(entidad);
+
+            var respuesta = modelo.NuevaMembresia(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("InicioMembresia", "Membresia");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
                 return View();
             }
         }
-
-        // ------------------------------------------------------
 
         [HttpGet]
         public ActionResult Actualizar(string id)
@@ -63,17 +56,18 @@ namespace ProyectoNoSQL_Web.Controllers
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new Inventario());
+                return View(new Membresia());
             }
         }
 
+
         [HttpPost]
-        public ActionResult Actualizar(Inventario entidad)
+        public ActionResult Actualizar(Membresia entidad)
         {
             var respuesta = modelo.Editar(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("InicioMembresia", "Membresia");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
@@ -81,15 +75,15 @@ namespace ProyectoNoSQL_Web.Controllers
             }
         }
 
-        // ------------------------------------------------------
-
         [HttpGet]
         public ActionResult Eliminar(string id)
         {
+
+
             var respuesta = modelo.Eliminar(id);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("InicioMembresia", "Membresia");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;

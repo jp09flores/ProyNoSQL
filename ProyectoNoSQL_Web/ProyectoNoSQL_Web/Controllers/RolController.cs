@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProyectoNoSQL_Web.Controllers
 {
+    [FiltroSeguridad]
     public class RolController : Controller
     {
         RolModel modelo = new RolModel();

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProyectoNoSQL_Web.Controllers
 {
+    [FiltroSeguridad]
     public class ProveedorController : Controller
     {
         ProveedorModel modelo = new ProveedorModel();

@@ -30,15 +30,15 @@
                                                         <div class="col-sm-12">
                                                             <div class="form-group">
                                                                 @Html.Label("Nombre de la Maquina")
-                                                                @Html.TextBoxFor(model => model.NombreMaquina, new { @class = "form-control"})
+                                                                @Html.TextBoxFor(model => model.NombreMaquina, new { @class = "form-control", @required = "true" })
                                                             </div>
                                                             <div class="form-group">
                                                                 @Html.Label("Descripcion")
-                                                                @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+                                                                @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", @required = "true" })
                                                             </div>
                                                             <div class="form-group">
                                                                 @Html.Label("Estado")
-                                                                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control" })
+                                                                @Html.DropDownListFor(m => m.Estado, new SelectList(new[] { new SelectListItem { Text = "Seleccione....", Value = "null" }, new SelectListItem { Text = "Inactivo", Value = "false" }, new SelectListItem { Text = "Activo", Value = "true" } }, "Value", "Text"), new { @class = "form-control" })
                                                             </div>
 
                                                             <button type="submit" class="btn btn-primary">Guardar</button>

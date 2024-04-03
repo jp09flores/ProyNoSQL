@@ -151,14 +151,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\ClasesController.cs" />
+    <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\MaquinaController.cs" />
+    <Compile Include="Controllers\MembresiaController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entidades\Clase.cs" />
+    <Compile Include="Entidades\Empleado.cs" />
     <Compile Include="Entidades\Inventario.cs" />
     <Compile Include="Entidades\Maquina.cs" />
+    <Compile Include="Entidades\Membresia.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
@@ -166,8 +173,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClasesModel.cs" />
+    <Compile Include="Models\FiltroSeguridad.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
+    <Compile Include="Models\EmpleadosModel.cs" />
     <Compile Include="Models\InventarioModel.cs" />
     <Compile Include="Models\MaquinaModel.cs" />
+    <Compile Include="Models\MembresiasModel.cs" />
     <Compile Include="Models\ProveedorModel.cs" />
     <Compile Include="Models\RolModel.cs" />
     <Compile Include="Models\ClientesModel.cs" />
@@ -280,6 +292,16 @@
     <Content Include="Views\Proveedor\Index.cshtml" />
     <Content Include="Views\Proveedor\Nuevo.cshtml" />
     <Content Include="Views\Proveedor\Actualizar.cshtml" />
+    <Content Include="Views\Clases\Actualizar.cshtml" />
+    <Content Include="Views\Clases\Index.cshtml" />
+    <Content Include="Views\Clases\Nuevo.cshtml" />
+    <Content Include="Views\Empleados\Actualizar.cshtml" />
+    <Content Include="Views\Empleados\Consultar.cshtml" />
+    <Content Include="Views\Empleados\Nuevo.cshtml" />
+    <Content Include="Views\Membresia\Actualizar.cshtml" />
+    <Content Include="Views\Membresia\InicioMembresia.cshtml" />
+    <Content Include="Views\Membresia\Nuevo.cshtml" />
+    <Content Include="Views\Usuario\InicioSesion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

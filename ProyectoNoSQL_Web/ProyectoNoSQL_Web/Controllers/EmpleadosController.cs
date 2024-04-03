@@ -1,4 +1,5 @@
-﻿using ProyectoNoSQL_Web.Entidades;
+﻿
+using ProyectoNoSQL_Web.Entidades;
 using ProyectoNoSQL_Web.Models;
 using System;
 using System.Collections.Generic;
@@ -9,49 +10,43 @@ using System.Web.Mvc;
 namespace ProyectoNoSQL_Web.Controllers
 {
     [FiltroSeguridad]
-    public class InventarioController : Controller
+    public class EmpleadosController : Controller
     {
-        InventarioModel modelo = new InventarioModel();
-
-        // ------------------------------------------------------
-
+        EmpleadosModel modelo = new EmpleadosModel();
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Consultar()
         {
-            var respuesta = modelo.ConsultarDatosInventario();
+            var respuesta = modelo.ConsultarDatosPersonales();
 
             if (respuesta.Codigo == 0)
                 return View(respuesta.Datos);
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new List<Inventario>());
+                return View(new List<Empleado>());
             }
         }
-
-        // ------------------------------------------------------
-
         [HttpGet]
         public ActionResult Nuevo()
         {
+           
             return View();
         }
 
         [HttpPost]
-        public ActionResult Nuevo(Inventario entidad)
+        public ActionResult Nuevo(Empleado entidad)
         {
-            var respuesta = modelo.NuevoDatosInventario(entidad);
+            entidad.FechaInicioEmpleo = DateTime.Now;
+            var respuesta = modelo.NuevoDatosPersonales(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("Consultar", "Empleados");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
                 return View();
             }
         }
-
-        // ------------------------------------------------------
 
         [HttpGet]
         public ActionResult Actualizar(string id)
@@ -63,17 +58,18 @@ namespace ProyectoNoSQL_Web.Controllers
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
-                return View(new Inventario());
+                return View(new Empleado());
             }
         }
 
+
         [HttpPost]
-        public ActionResult Actualizar(Inventario entidad)
+        public ActionResult Actualizar(Empleado entidad)
         {
             var respuesta = modelo.Editar(entidad);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("Consultar", "Empleados");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
@@ -81,15 +77,15 @@ namespace ProyectoNoSQL_Web.Controllers
             }
         }
 
-        // ------------------------------------------------------
-
         [HttpGet]
         public ActionResult Eliminar(string id)
         {
+
+
             var respuesta = modelo.Eliminar(id);
 
             if (respuesta.Codigo == 0)
-                return RedirectToAction("Index", "Inventario");
+                return RedirectToAction("Consultar", "Empleados");
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;

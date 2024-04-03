@@ -1,0 +1,50 @@
+﻿@model ProyectoNoSQL_Web.Entidades.Empleado
+@{
+    ViewBag.Title = "InicioSesion";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="img" style="background-image: url(/Estilos2/images/logo.jpg);">
+                    </div>
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Sign In</h3>
+                            </div>
+
+                        </div>
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning" role="alert" style="text-align:center">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
+
+                        @using (Html.BeginForm("InicioSesion", "Usuario"))
+                        {
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-user", @placeholder = "Email", @required = "true" })
+                            </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Contrasena, new { @class = "form-control form-control-user", @placeholder = "Contraseña", @required = "true" })
+                            </div>
+
+                            <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

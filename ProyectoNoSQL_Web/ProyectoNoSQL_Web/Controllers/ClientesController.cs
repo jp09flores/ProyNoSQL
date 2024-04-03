@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ProyectoNoSQL_Web.Controllers
 {
+    [FiltroSeguridad]
     public class ClientesController : Controller
     {
         ClientesModel modelo = new ClientesModel();
@@ -29,17 +30,15 @@ namespace ProyectoNoSQL_Web.Controllers
         public ActionResult Nuevo()
         {
 
-            var datosPersonales = new Cliente();
+           
 
-            datosPersonales.FechaInicioMembresia = DateTime.Now;
-
-            return View(datosPersonales);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Nuevo(Cliente entidad)
         {
-
+            entidad.FechaInicioMembresia = DateTime.Now;
             var respuesta = modelo.NuevoDatosPersonales(entidad);
 
             if (respuesta.Codigo == 0)

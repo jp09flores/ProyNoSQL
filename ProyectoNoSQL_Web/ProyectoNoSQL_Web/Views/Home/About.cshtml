@@ -1,9 +1,79 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<style>
+    .gym-info-details {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <p>Use this area to provide additional information.</p>
-</main>
+        .gym-info-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .gym-info-details ul li {
+                margin-bottom: 10px;
+            }
+
+    .social-links ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+    }
+
+        .social-links ul li {
+            margin-right: 10px;
+        }
+</style>
+
+<!-- GYM INFORMATION -->
+<section class="gym-info section" id="gym-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
+                <img src="~/Estilos2/images/logo.jpg" alt="Logo del Gimnasio" class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="gym-info-details">
+                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">¡Bienvenido a Gymso!</h2>
+                    <p data-aos="fade-up" data-aos-delay="400">Somos el gimnasio líder en San José, dedicado a ayudarte a alcanzar tus metas de fitness.</p>
+                    <ul>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-phone mr-1"></i> Teléfono: +123456789</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-envelope mr-1"></i> Correo electrónico: info@gymso.com</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-clock mr-1"></i> Horario de operación: Lunes a Viernes: 6am - 10pm, Sábado y Domingo: 8am - 8pm</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-map-marker mr-1"></i> Dirección: VWC9+GQQ, San José, San Juan de Dios</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-check mr-1"></i> Instalaciones: Sala de pesas, área de cardio, sala de clases grupales, área de relajación.</li>
+                        <li data-aos="fade-up" data-aos-delay="500"><i class="fa fa-check mr-1"></i> Servicios: Entrenamiento personalizado, clases grupales, asesoramiento nutricional.</li>
+                    </ul>
+                    <h4>Síguenos en redes sociales:</h4>
+                    <ul>
+                        <div style="display:flex">
+                        <li><a href="https://www.facebook.com/gymso" target="_blank"><i class="fa-brands fa-facebook mx-3"></i></a></li>
+                        <li><a href="https://www.instagram.com/gymso" target="_blank"><i class="fa-brands fa-instagram  mx-3"></i></a></li>
+                        <li><a href="https://www.twitter.com/gymso" target="_blank"><i class="fab fa-twitter  mx-3"></i></a></li>
+                </div>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<!-- MAPA -->
+<section class="map section" id="map">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Encuéntranos en el mapa</h2>
+                <div class="google-map" data-aos="fade-up" data-aos-delay="400">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d982.6874420432399!2d-84.08090130806931!3d9.871348800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e2bfe38aca49%3A0x38877b39296ac9af!2sGimnasio%20SportFitness!5e0!3m2!1ses!2scr!4v1710467686426!5m2!1ses!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

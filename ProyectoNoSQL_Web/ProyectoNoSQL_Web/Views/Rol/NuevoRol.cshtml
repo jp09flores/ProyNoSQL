@@ -28,7 +28,7 @@
                                     @using (Html.BeginForm("NuevoRol", "Rol"))
                                     {
                                         <div class="form-group my-2">
-                                            @Html.TextBoxFor(m => m.IdRol, new { @class = "form-control form-control-user", @placeholder = "ID Rol", @required = "true" })
+                                            @Html.TextBoxFor(m => m.IdRol, new { @class = "form-control form-control-user", @placeholder = "ID Rol", @required = "true", @type = "number" })
                                         </div>
                                         <div class="form-group my-2">
                                             @Html.TextBoxFor(m => m.NombreRol, new { @class = "form-control form-control-user", @placeholder = "Nombre Rol", @required = "true" })
