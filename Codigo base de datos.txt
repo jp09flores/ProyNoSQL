@@ -29,7 +29,8 @@ db.empleados.insertOne({
   "telefono": "987654321",
   "email": "ejemplo@empleado.com",
   "fecha_inicio_empleo": new Date("2020-01-01"),
-  "salario": 2500.00
+  "salario": 2500.00,
+  "contrasena": "123"
 });
 
 // Crear la colección "membresias" y insertar un documento de ejemplo
